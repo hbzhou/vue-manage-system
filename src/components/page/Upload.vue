@@ -26,13 +26,13 @@
                 vue-cropperjs：一个封装了 cropperjs 的 Vue 组件。
                 访问地址：<a href="https://github.com/Agontuk/vue-cropperjs" target="_blank">vue-cropperjs</a>
             </div>
+
             <div class="crop-demo">
                 <img :src="cropImg" class="pre-img">
                 <div class="crop-demo-btn">选择图片
                     <input class="crop-input" type="file" name="image" accept="image/*" @change="setImage"/>
                 </div>
             </div>
-        
             <el-dialog title="裁剪图片" :visible.sync="dialogVisible" width="30%">
                 <vue-cropper ref='cropper' :src="imgSrc" :ready="cropImage" :zoom="cropImage" :cropmove="cropImage" style="width:100%;height:300px;"></vue-cropper>
                 <span slot="footer" class="dialog-footer">
@@ -105,7 +105,7 @@
         font-size: 22px;
         color: #1f2f3d;
     }
-    .pre-img{   
+    .pre-img{
         width: 100px;
         height: 100px;
         background: #f8f8f8;

@@ -5,10 +5,23 @@ import ElementUI from 'element-ui';
 import VueI18n from 'vue-i18n';
 import { messages } from './components/common/i18n';
 import 'element-ui/lib/theme-chalk/index.css'; // 默认主题
-// import './assets/css/theme-green/index.css'; // 浅绿色主题
+import './assets/css/theme-green/index.css'; // 浅绿色主题
 import './assets/css/icon.css';
 import './components/common/directives';
 import 'babel-polyfill';
+import moment from 'moment'
+import request from './utils/request';
+import store from './store';
+
+Vue.prototype.$moment = moment
+Vue.prototype.$post = request.post
+Vue.prototype.$get = request.get
+Vue.prototype.$put = request.put
+Vue.prototype.$delete = request.delete
+Vue.prototype.$download = request.download
+Vue.prototype.$upload = request.upload
+Vue.prototype.$login = request.login
+
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
@@ -28,7 +41,7 @@ router.beforeEach((to, from, next) => {
         next('/login');
     } else if (to.meta.permission) {
         // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-        role === 'admin' ? next() : next('/403');
+        role === 'febs' ? next() : next('/403');
     } else {
         // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
         if (navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor') {
@@ -44,5 +57,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
     router,
     i18n,
+    store,
     render: h => h(App)
 }).$mount('#app');

@@ -101,7 +101,33 @@ export default new Router({
                     path: '/donate',
                     component: () => import(/* webpackChunkName: "donate" */ '../components/page/Donate.vue'),
                     meta: { title: '支持作者' }
+                },
+                {
+                    path: '/user',
+                    component: () => import('../components/page/user/User.vue'),
+                    meta: { title: '用户管理', permission: true }
+                },
+                {
+                    path: '/dept',
+                    component: () => import('../components/page/dept/Dept.vue'),
+                    meta: { title: '部门管理', permission: true }
+                },
+                {
+                    path: '/role',
+                    component: () => import('../components/page/role/Role.vue'),
+                    meta: { title: '角色管理', permission: true }
+                }, {
+                    path: '/menu',
+                    component: () => import('../components/page/menu/Menu.vue'),
+                    meta: { title: '菜单管理', permission: true }
+                },{
+                  path: '/vacationLeave',
+                  component: () => import('../components/page/vacationLeave/vacationLeaveTab.vue'),
+                  meta: { title: '请假流程', permission: true}
                 }
+
+
+
             ]
         },
         {

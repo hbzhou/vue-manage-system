@@ -1,16 +1,20 @@
 module.exports = {
-    baseUrl: './',
     assetsDir: 'static',
     productionSourceMap: false,
-    // devServer: {
-    //     proxy: {
-    //         '/api':{
-    //             target:'http://jsonplaceholder.typicode.com',
-    //             changeOrigin:true,
-    //             pathRewrite:{
-    //                 '/api':''
-    //             }
-    //         }
-    //     }
-    // }
+    devServer: {
+        port: 3000,
+        open: true,
+        host: 'localhost',
+        https: false,
+        proxy: {//配置跨域
+            [process.env.VUE_APP_BASE_API]: {
+                target: 'http://localhost:8011/',
+                changeOrigin: true,
+                pathRewrite: {
+                    ['^' + process.env.VUE_APP_BASE_API]: ''
+                }
+            }
+        }
+    }
+
 }
